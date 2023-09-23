@@ -2,8 +2,11 @@ import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcrypt';
 import User from '../models/user.js';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN_SECRET;
+/*global process*/
+const ACCESS_TOKEN = process.env.VITE_ACCESS_TOKEN_SECRET;
 
 export const registerUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
@@ -45,8 +48,7 @@ export const loginUser = asyncHandler(async (req, res) => {
           id: user.id,
         },
       },
-      ACCESS_TOKEN,
-      { expiresIn: '1h' }
+      ACCESS_TOKEN
     );
     res.status(200).json({ accessToken });
   } else {

@@ -11,13 +11,12 @@ const todoSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please add the task title'],
     },
-    description: {
-      type: String,
-      required: [true, 'Please add the task description'],
-    },
     date: {
       type: String,
       required: [true, 'Please add the task completion date'],
+    },
+    completion: {
+      type: Boolean,
     },
   },
   {

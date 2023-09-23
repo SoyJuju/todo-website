@@ -7,16 +7,16 @@ export const getList = asyncHandler(async (req, res) => {
 });
 
 export const createItem = asyncHandler(async (req, res) => {
-  const { title, description, date } = req.body;
-  if (!title || !description || !date) {
+  const { title, date, completion } = req.body;
+  if (!title || date === '') {
     res.status(400);
     throw new Error('All fields are mandatory!');
   }
 
   const newItem = new TodoList({
     title,
-    description,
     date,
+    completion,
     user_id: req.user.id,
   });
 
@@ -47,6 +47,12 @@ export const updateItem = asyncHandler(async (req, res) => {
     );
   }
 
+  const { title, date } = req.body;
+  if (!title || date === '') {
+    res.status(400);
+    throw new Error('All fields are mandatory!');
+  }
+
   const updatedItem = await TodoList.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -54,6 +60,29 @@ export const updateItem = asyncHandler(async (req, res) => {
       new: true,
     }
   );
+
+  res.status(200).json(updatedItem);
+});
+
+export const updateItemCompletion = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { completion } = req.body;
+
+  const updatedItem = await TodoList.findByIdAndUpdate(
+    id,
+    { completion },
+    { new: true }
+  );
+
+  if (!updatedItem) {
+    res.status(404);
+    throw new Error('Task not found');
+  }
+
+  if (updatedItem.user_id.toString() !== req.user.id) {
+    res.status(403);
+    throw new Error("User doesn't have permission to update other user's task");
+  }
 
   res.status(200).json(updatedItem);
 });

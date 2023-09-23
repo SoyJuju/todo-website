@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const CONNECTION_STRING = import.meta.env.VITE_CONNNECTION_STRING;
+/*global process*/
+const CONNECTION_STRING = process.env.VITE_CONNNECTION_STRING;
 
 const connectDb = async () => {
   try {

@@ -7,6 +7,7 @@ import {
   createItem,
   getItem,
   updateItem,
+  updateItemCompletion,
   deleteItem,
 } from '../controllers/todoControllers.js';
 
@@ -16,5 +17,6 @@ router
   .get(validateToken, getItem)
   .put(validateToken, updateItem)
   .delete(validateToken, deleteItem);
+router.put('/:id/update-completion', validateToken, updateItemCompletion);
 
 export default router;

@@ -1,7 +1,10 @@
 import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN_SECRET;
+/*global process*/
+const ACCESS_TOKEN = process.env.VITE_ACCESS_TOKEN_SECRET;
 
 const validateToken = asyncHandler(async (req, res, next) => {
   let token;
