@@ -15,8 +15,8 @@ connectDb();
 const app = express();
 app.use(
   cors({
-    origin: ['https://todo-website-q4i27sngh-soyjuju.vercel.app'],
-    methods: ['POST', 'GET', 'DELETE', 'PUT'],
+    origin: ['https://todo-website-q8k9p8jh4-soyjuju.vercel.app/'],
+    methods: ['POST', 'GET'],
     credentials: true,
   })
 );
