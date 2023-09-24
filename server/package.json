@@ -4,8 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "build": "echo 'No build step needed for this project'"
+    "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
