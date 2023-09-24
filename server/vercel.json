@@ -3,16 +3,16 @@
   "builds": [{ "src": "*.js", "use": "@vercel/node" }],
   "routes": [
     {
+      "src": "/api/todo-list(.*)",
+      "dest": "/api/todoRouter.js"
+    },
+    {
+      "src": "/api/users(.*)",
+      "dest": "/api/userRouter.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "/"
-    },
-    {
-      "src": "/api/todo-list",
-      "dest": "/api/todoRouter"
-    },
-    {
-      "src": "/api/users/(.*)",
-      "dest": "/api/userRouter"
     }
   ]
 }
