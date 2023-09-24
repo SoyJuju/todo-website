@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [{ "src": "*.js", "use": "@vercel/node" }],
+  "routes": [
+    {
+      "src": "/api/todo-list(.*)",
+      "dest": "/api/todoRouter.js"
+    },
+    {
+      "src": "/api/users(.*)",
+      "dest": "/api/userRouter.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}
