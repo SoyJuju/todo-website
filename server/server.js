@@ -9,13 +9,7 @@ dotenv.config();
 connectDb();
 
 const app = express();
-app.use(
-  cors({
-    origin: ['https://todo-website-q8k9p8jh4-soyjuju.vercel.app/'],
-    methods: ['POST', 'GET'],
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/todo-list', todoRoutes);
