@@ -98,7 +98,9 @@ export default function Items({ setRefresh, items, delete_item, handleEdit }) {
                 {item.title}
               </label>
             </div>
-            <p className="ml-auto mr-8 whitespace-nowrap">{item.date}</p>
+            <p className="text-center w-20 mx-5 whitespace-nowrap">
+              {item.date}
+            </p>
             <div className="w-16 ml-auto flex items-center gap-3 z-10">
               <button className="w-6" onClick={() => handleEdit(item)}>
                 <img src={edit_icon} alt="" />
